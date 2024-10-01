@@ -1,4 +1,5 @@
 import os
+from devops import Devops
 
 def nodejs_typescript_postgres():
     lista_comandos = ["cd", "mkdir", "npm init -y", "npm init -y", "npm i typescript -D", "npm i fastify", "npm i tsx -D", "npm i @types/node tsx -D", "npm i postgres", "npx tsc --init", "npm i zod drizzle-orm", "npm i drizzle-kit -D", "echo 'node_modules/' > .gitignore", "git init","""echo '{
@@ -115,9 +116,13 @@ def executa_funcoes(numero):
 
 def opcoes():
     logo()
-    print('\nBem vindo o que vc deseja fazer?')
-    funcoes()
+    print('\nBem vindo o que vc deseja fazer está relacionada a que área?')
+    #funcoes()
+    areas = ["1 - Devops"]
 
+    for a in areas:
+      print(a)
+    
     opcao = 0
 
     while opcao != 5:
@@ -125,10 +130,8 @@ def opcoes():
         print("\n")
         if opcao == 5:
             print("Programa finalizado!")
-        else:
-            executa_funcoes(opcao)
-
-
-
+        elif opcao == 1:
+            devop = Devops()
+            devop.inicio()
 
 opcoes()
