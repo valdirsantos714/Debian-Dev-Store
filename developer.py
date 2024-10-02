@@ -3,9 +3,9 @@ import os
 class Dev:
 
     def __init__(self):
-        self.funcionalidades = ['1 - Criar Projeto NodeJs + Typescript + PostgreSQL', "2 - ", "3 - ", "4 - ", "5 - Sair"]
+        self.funcionalidades = ['1 - Criar Projeto NodeJs + Typescript + PostgreSQL', "2 - Criar projeto React Native + Typescript + Tailwind CSS ", "3 - ", "4 - ", "5 - Sair"]
 
-        self.executadores = ["", self.nodejs_typescript_postgres]
+        self.executadores = ["", self.nodejs_typescript_postgres, self.react_native_typescript]
 
 
     def inicio(self):
@@ -38,7 +38,7 @@ class Dev:
         print(f"{self.executadores[numero]}")
 
     def mostra_funcionalidade(self):
-        print("Bem vindo a Loja de ferramenta Devops!\n")
+        print("Bem vindo a Loja de ferramenta Development!\n")
         print("Escolha uma das opções abaixo:")
 
         for f in self.funcionalidades:
@@ -111,16 +111,53 @@ class Dev:
     DB_URL="postgresql://postgres:nodejs@localhost:5433/database"
     ' > .env"""]
 
-        caminho = "/home/valdir/Documentos/z_coisas_uteis"
-        #caminhoAbsoluto = input("Digite o caminho absoluto (ex: /home/user/Documentos/coisas_uteis) aonde vc deseja criar o seu projeto: ")
+        caminho_absoluto = input("Digite o caminho absoluto (ex: /home/user/Documentos/coisas_uteis) aonde vc deseja criar o seu projeto: ")
 
         nome_projeto = input("Digite o nome do projeto que vc deseja criar : ")
         os.system(lista_comandos[0]) # cd
-        os.chdir(caminho) # Entra no caminho especificado
+        os.chdir(caminho_absoluto) # Entra no caminho especificado
         os.system(lista_comandos[1] + f" {nome_projeto}") # Cria pasta
         os.system(lista_comandos[0]) # cd
-        os.chdir(caminho + f"/{nome_projeto}")
+        os.chdir(caminho_absoluto + f"/{nome_projeto}")
 
         for i in range(2,len(lista_comandos)):
             os.system(lista_comandos[i])
 
+    def react_native_typescript(self):
+
+        caminho = "/home/valdir/Documentos/z_coisas_uteis"
+        #caminho_absoluto = input("Digite o caminho absoluto (ex: /home/user/Documentos/coisas_uteis) aonde vc deseja criar o seu projeto: ")
+
+        nome_projeto = input("Digite o nome do projeto que vc deseja criar : ")
+        os.system("cd") # cd
+        os.chdir(caminho) # Entra no caminho especificado
+        
+        lista_comandos = [f"npx create-expo-app {nome_projeto} --template expo-template-blank-typescript","npm i", "npm i nativewind", "npm i --save-dev tailwindcss@3.3.2", "npx tailwindcss init", """echo '
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
++   plugins: ['nativewind/babel'],
+  };
+};
+
+' > babel.config.js """, """echo '
+module.exports = {
+    - content: [],
+    + content: ['./src/**/*.{ts,tsx}'],
+      theme: {
+        extend: {},
+      },
+      plugins: [],
+    }
+
+' > tailwind.config.js """, "npx expo start"]
+
+        os.system(lista_comandos[0])
+
+        os.chdir(caminho + f"/{nome_projeto}")
+
+        for i in range(1, len(lista_comandos)):
+            os.system(lista_comandos[i])
+
+        
