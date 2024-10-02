@@ -2,7 +2,11 @@ import os
 
 class Devops:
 
-    funcionalidades = ['1 - Instalar docker', "2 - Hello world Docker", "3 - ", "4 - ", "5 - Sair"]
+    def __init__(self):
+        self.funcionalidades = ['1 - Instalar docker', "2 - Hello world Docker", "3 - ", "4 - ", "5 - Sair"]
+
+        self.executadores = ["", self.install_docker, self.hello_world_docker]
+
 
     def inicio(self):
         os.system("clear")
@@ -23,7 +27,7 @@ class Devops:
             print("\n")
 
             if opcao == 5:
-                print("Programa finalizado!")
+                os.system("clear")
             else:
                 self.executa_funcoes(opcao)
 
@@ -37,9 +41,8 @@ class Devops:
 
     def executa_funcoes(self, numero):
 
-        executadores = ["", self.install_docker, self.hello_world_docker]
-        executadores[numero]()
-        print(f"{executadores[numero]}")
+        self.executadores[numero]()
+        print(f"{self.executadores[numero]}")
 
     def hello_world_docker(self):
         os.system("sudo docker run hello-world")
