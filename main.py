@@ -1,6 +1,7 @@
 import os
-from devops import Devops
-from developer import Dev
+from devops.devops import Devops
+from software_development.developer import Dev
+from essential_tools.essential_tools import EssentialTools 
 
 def logo():
     print("""
@@ -21,7 +22,7 @@ def logo():
 def apresentacao():
     logo()
     print('\nBem vindo o que vc deseja fazer está relacionada a que área?')
-    areas = ["1 - Devops, 2 - Development, 5 - Sair"]
+    areas = ["1 - Devops", "2 - Software Development", "3 - Essential Tools", "5 - Sair"]
 
     for a in areas:
       print(a)
@@ -42,5 +43,8 @@ def opcoes():
         elif opcao == 2:
             dev = Dev()
             dev.inicio()
+        elif opcao == 3:
+            tools = EssentialTools()
+            tools.inicio()
 
 opcoes()

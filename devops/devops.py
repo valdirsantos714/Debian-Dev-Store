@@ -33,7 +33,7 @@ class Devops:
 
         
     def mostra_funcionalidade(self):
-        print("Bem vindo a Loja de ferramenta Devops!\n")
+        print("\nBem vindo a Loja Devops!\n")
         print("Escolha uma das opções abaixo:")
 
         for f in self.funcionalidades:
