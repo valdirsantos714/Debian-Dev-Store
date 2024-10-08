@@ -58,9 +58,9 @@ O Debian Dev Store foi desenvolvido para funcionar exclusivamente em ambientes e
    cd Debian-Dev-Store
    ```
 3. **Execute o Script de Automação**:
-     ```bash
-     python main.py
-     ```
+    ```bash
+    python3 main.py
+    ```
 
 ## Contribuições
 
