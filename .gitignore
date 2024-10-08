@@ -1,0 +1,5 @@
+__pycache__/
+devops/__pycache__/
+*.pyc
+*.pyo
+.venv/
