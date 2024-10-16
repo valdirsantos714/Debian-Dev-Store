@@ -7,9 +7,9 @@ class Devops:
         Inicializa a loja com uma lista de funcionalidades e de executadores.
         """
 
-        self.funcionalidades = ['1 - Instalar Docker', "2 - Instalar Ansible", "3 - Instalar Terraform", "4 - Executar Prometheus", "5 - Sair", "6 - Instalar Jenkins", "7 - Instalar Kubernates"]
+        self.funcionalidades = ['1 - Instalar Docker', "2 - Instalar Ansible", "3 - Instalar Terraform", "4 - Executar Prometheus", "5 - Sair", "6 - Instalar Jenkins", "7 - Instalar Kubernates", "8 - Instalar AWS Cli"]
 
-        self.executadores = ["", self.install_docker, self.install_ansible, self.install_terraform, self.prometheus, "", self.install_jenkins, self.install_kubernates]
+        self.executadores = ["", self.install_docker, self.install_ansible, self.install_terraform, self.prometheus, "", self.install_jenkins, self.install_kubernates, self.install_aws_cli]
 
 
     def inicio(self):
@@ -183,3 +183,15 @@ class Devops:
 
         except Exception as e:
             print(f"Ocorreu um erro: {e}")
+
+    def install_aws_cli(self):
+        """
+        Instala a AWS Cli no sistema.    
+        """
+
+        lista_comandos = ["curl 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip' -o 'awscliv2.zip'", "unzip awscliv2.zip", "sudo ./aws/install"]
+
+        os.chdir("~")
+
+        for c in lista_comandos:
+            os.system(c)
